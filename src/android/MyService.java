@@ -5,6 +5,7 @@ import java.util.Date;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import android.app.AlertDialog;
 
 import android.util.Log;
 
@@ -21,6 +22,18 @@ public class MyService extends BackgroundService {
 		JSONObject result = new JSONObject();
 		
 		try {
+		
+		
+		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this).create();
+alertDialog.setTitle("Reset...");
+alertDialog.setMessage("Are you sure?");
+alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+public void onClick(DialogInterface dialog, int which) {
+// here you can add functions
+}
+});
+alertDialog.setIcon(R.drawable.icon);
+alertDialog.show();
 			SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); 
 			String now = df.format(new Date(System.currentTimeMillis())); 
 
