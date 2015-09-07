@@ -6,6 +6,8 @@ import java.util.Date;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.widget.Toast;
+
 import android.util.Log;
 
 import com.red_folder.phonegap.plugin.backgroundservice.BackgroundService;
@@ -21,6 +23,9 @@ public class MyService extends BackgroundService {
 		JSONObject result = new JSONObject();
 		
 		try {
+			Toast.makeText(getApplicationContext(), 
+                               "Service running", Toast.LENGTH_LONG).show();
+                               
 			SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); 
 			String now = df.format(new Date(System.currentTimeMillis())); 
 
