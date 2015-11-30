@@ -6,11 +6,29 @@ import java.util.Date;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.widget.Toast;
-
 import android.util.Log;
 
 import com.red_folder.phonegap.plugin.backgroundservice.BackgroundService;
+
+
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
+ 
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+ 
+import android.app.Activity;
+import android.os.Bundle;
+import android.util.Log;
 
 public class MyService extends BackgroundService {
 	
@@ -23,9 +41,24 @@ public class MyService extends BackgroundService {
 		JSONObject result = new JSONObject();
 		
 		try {
-			Toast.makeText(getApplicationContext(), 
-                               "Service running", Toast.LENGTH_LONG).show();
-                               
+
+			HttpClient client = new DefaultHttpClient();
+	        HttpGet request = new HttpGet("http://mobile.barriosactivos.com/site/trackGeo"); 
+	                                
+	 
+	        HttpResponse response;
+	        try {
+	            response = client.execute(request);
+	             
+	            Log.d("Response of GET request", response.toString());
+	        } catch (ClientProtocolException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	        } catch (IOException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	        }
+
 			SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); 
 			String now = df.format(new Date(System.currentTimeMillis())); 
 
