@@ -34,7 +34,7 @@ public class MyService extends BackgroundService {
 	
 	private final static String TAG = MyService.class.getSimpleName();
 	
-	private String mHelloTo = "World ESTEBAN";
+	private String mHelloTo = "World ESTEBAN PEREZ";
 
 	@Override
 	protected JSONObject doWork() {
